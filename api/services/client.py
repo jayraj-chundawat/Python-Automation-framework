@@ -18,4 +18,15 @@ class APIClient:
         url = self._create_url(endpoint)
         response = requests.post(url, data=data, json=json_data, headers=headers)
         return response
+        
+    def put(self, endpoint, json_data=None, headers=None):
+        url = self._create_url(endpoint)
+        response = requests.put(url, json=json_data, headers=headers)
+        return response
+
+    def delete(self, endpoint, headers=None):
+        url = self._create_url(endpoint)
+        response = requests.delete(url, headers=headers)
+        return response
+
 
