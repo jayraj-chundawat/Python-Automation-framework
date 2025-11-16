@@ -11,4 +11,10 @@ class PostService(APIClient):
 
     def create_post(self, payload):
         return self.post("/posts", json_data=payload)
+        
+    def update_post(self, post_id, payload):
+        return self.put(f"/posts/{post_id}", json_data=payload)
+
+    def delete_post(self, post_id):
+        return self.delete(f"/posts/{post_id}")
 
