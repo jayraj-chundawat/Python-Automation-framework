@@ -1,1 +1,14 @@
+from api.services.client import APIClient
+
+class PostService(APIClient):
+    """Service class to manage post-related API calls"""
+
+    def __init__(self, base_url):
+        super().__init__(base_url)
+      
+    def get_post(self, post_id):
+        return self.get(f"/posts/{post_id}")
+
+    def create_post(self, payload):
+        return self.post("/posts", json_data=payload)
 
