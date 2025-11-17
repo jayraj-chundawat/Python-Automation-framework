@@ -8,3 +8,9 @@ class ConfigManager:
         with open(config_file, "r") as file:
             self.config = json.load(file)
 
+        self.env = self.config["env"]
+
+    def get_base_url(self):
+        return self.config[self.env]["base_url"]
+
+
