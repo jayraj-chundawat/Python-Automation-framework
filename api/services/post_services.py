@@ -1,11 +1,14 @@
 from api.services.client import APIClient
+from config.config_manager import ConfigManager
 
 class PostService(APIClient):
     """Service class to manage post-related API calls"""
 
-    def __init__(self, base_url):
+    def __init__(self):
+        config = ConfigManager()
+        base_url = config.get_base_url()
         super().__init__(base_url)
-      
+
     def get_post(self, post_id):
         return self.get(f"/posts/{post_id}")
 
@@ -17,4 +20,5 @@ class PostService(APIClient):
 
     def delete_post(self, post_id):
         return self.delete(f"/posts/{post_id}")
+
 
