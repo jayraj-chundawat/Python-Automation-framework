@@ -1,1 +1,16 @@
+{
+    "env": "dev",
+
+    "dev": {
+        "base_url": "https://jsonplaceholder.typicode.com"
+    },
+
+    "qa": {
+        "base_url": "https://example-qa.com"
+    },
+
+    "prod": {
+        "base_url": "https://example-prod.com"
+    }
+}
 
