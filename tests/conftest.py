@@ -3,6 +3,10 @@ from api.services.post_services import PostService
 
 @pytest.fixture(scope="session")
 def post_service():
-    """Provides PostService instance for test functions"""
     return PostService()
+
+def pytest_html_report_title(report):
+    """Customize the title of the HTML report"""
+    report.title = "Python API Automation Test Report"
+
 
