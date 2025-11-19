@@ -1,8 +1,24 @@
+import os
+from utils.schema_validator import SchemaValidator
+
 def test_get_post(post_service):
     status, response = post_service.get_post(1)
 
     assert status == 200
     assert response["id"] == 1
+    assert "title" in response
+
+
+def test_get_post_schema(post_service):
+    status, response = post_service.get_post(1)
+
+    assert status == 200
+
+    schema_path = os.path.abspath("schemas/post_schema.json")
+    is_valid, error = SchemaValidator.validate_response(schema_path, response)
+
+    assert is_valid, f"Schema validation failed: {error}"
+
 
 def test_create_post(post_service):
     payload = {"title": "foo", "body": "bar", "userId": 1}
@@ -10,6 +26,8 @@ def test_create_post(post_service):
 
     assert status == 201
     assert response["title"] == "foo"
+    assert response["body"] == "bar"
+
 
 def test_update_post(post_service):
     payload = {"title": "updated", "body": "changed", "userId": 1}
@@ -18,9 +36,11 @@ def test_update_post(post_service):
     assert status == 200
     assert response["title"] == "updated"
 
+
 def test_delete_post(post_service):
     status, response = post_service.delete_post(1)
 
     assert status == 200
-    assert response in ({}, None)  # Depends on API response
+    assert response is None or response == {}
+
 
