@@ -1,5 +1,8 @@
 import os
+import pytest
 from utils.schema_validator import SchemaValidator
+from utils.data_loader import DataLoader
+
 
 def test_get_post(post_service):
     status, response = post_service.get_post(1)
@@ -44,3 +47,11 @@ def test_delete_post(post_service):
     assert response is None or response == {}
 
 
+# DATA-DRIVEN TEST USING JSON FILE 
+@pytest.mark.parametrize("payload", DataLoader.load_json("data/post_data.json"))
+def test_create_post_ddt(post_service, payload):
+    status, response = post_service.create_post(payload)
+
+    assert status == 201
+    assert response["title"] == payload["title"]
+    assert response["body"] == payload["body"]
