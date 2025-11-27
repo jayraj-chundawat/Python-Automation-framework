@@ -146,7 +146,7 @@ UI tests:
 
 ---
 
-# ▶ How to Run Tests
+# How to Run Tests
 
 ### **1. Run API Tests**
 ```
