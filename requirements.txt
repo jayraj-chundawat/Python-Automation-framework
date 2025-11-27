@@ -1,0 +1,7 @@
+ Install all dependencies:
+ pytest
+ pytest-html
+ playwright
+ requests
+ jsonschema
+ pytest-xdist
