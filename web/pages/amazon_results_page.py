@@ -3,7 +3,7 @@ from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 
 class AmazonResultsPage(BasePage):
 
-    # Final correct selector based on HTML analysis
+    # Product title selector
     product_title = "h2.a-size-medium.a-spacing-none.a-color-base.a-text-normal span"
 
     # Price selectors
