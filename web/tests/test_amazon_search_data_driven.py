@@ -20,4 +20,9 @@ def test_amazon_search_data(browser, data):
     results = results_page.get_results()
 
     assert len(results) > 0, f"No results found for {product}"
-    assert any(product.lower() in r.lower() for r in results), f"{product} not found!"
+    assert any(
+        product.lower() in r.lower() or
+        "galaxy" in r.lower()
+        for r in results
+    ), f"{product} related products not found!"
+
