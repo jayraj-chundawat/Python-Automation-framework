@@ -43,7 +43,7 @@ def test_update_post(post_service):
 def test_delete_post(post_service):
     status, response = post_service.delete_post(1)
 
-    assert status == [200,204]
+    assert status in [200,204]
     assert response is None or response == {}
 
 
